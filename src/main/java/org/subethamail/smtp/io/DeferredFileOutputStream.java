@@ -82,9 +82,9 @@ public class DeferredFileOutputStream extends ThresholdingOutputStream
 	 */
 	public InputStream getInputStream() throws IOException
 	{
-		if (this.output instanceof BetterByteArrayOutputStream)
+		if (this.output instanceof BetterByteArrayOutputStream stream)
 		{
-			return ((BetterByteArrayOutputStream)this.output).getInputStream();
+			return stream.getInputStream();
 		}
 		else
 		{

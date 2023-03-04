@@ -8,8 +8,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import org.subethamail.smtp.MessageContext;
 import org.subethamail.smtp.MessageHandler;
@@ -43,7 +43,7 @@ public class SimpleMessageListenerAdapter implements MessageHandlerFactory
 	 */
 	public SimpleMessageListenerAdapter(SimpleMessageListener listener)
 	{
-		this(Collections.singleton(listener), DEFAULT_DATA_DEFERRED_SIZE);
+		this(Set.of(listener), DEFAULT_DATA_DEFERRED_SIZE);
 	}
 
 	/**

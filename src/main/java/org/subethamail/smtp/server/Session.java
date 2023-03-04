@@ -40,14 +40,14 @@ public class Session implements Runnable, MessageContext
 	 * connection is finished.
 	 */
 	private final ServerThread serverThread;
-	
+
 	/**
 	 * Saved SLF4J mapped diagnostic context of the parent thread. The parent
 	 * thread is the one which calls the constructor. MDC is usually inherited
 	 * by new threads, but this mechanism does not work with executors.
 	 */
-	private final Map<?, ?> parentLoggingMdcContext = MDC.getCopyOfContextMap();
-	
+	private final Map<String, String> parentLoggingMdcContext = MDC.getCopyOfContextMap();
+
 	/**
 	 * Uniquely identifies this session within an extended time period, useful
 	 * for logging.
@@ -173,10 +173,10 @@ public class Session implements Runnable, MessageContext
 			{
 				// just swallow this, the outer exception is the real problem.
 			}
-			if (e instanceof RuntimeException)
-				throw (RuntimeException) e;
-			else if (e instanceof Error)
-				throw (Error) e;
+			if (e instanceof RuntimeException exception)
+				throw exception;
+			else if (e instanceof Error error)
+				throw error;
 			else
 				throw new RuntimeException("Unexpected exception", e);
 		}
@@ -195,7 +195,7 @@ public class Session implements Runnable, MessageContext
 	 * commands. It quits when {@link #quitting} becomes true or when it can be
 	 * noticed or at least assumed that the client no longer sends valid
 	 * commands, for example on timeout.
-	 * 
+	 *
 	 * @throws IOException
 	 *             if sending to or receiving from the client fails.
 	 */
@@ -363,7 +363,7 @@ public class Session implements Runnable, MessageContext
 	public String getSessionId() {
 		return sessionId;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see org.subethamail.smtp.MessageContext#getRemoteAddress()
 	 */
@@ -472,12 +472,12 @@ public class Session implements Runnable, MessageContext
 
 	/**
 	 * Starts a mail transaction by creating a new message handler.
-	 * 
+	 *
 	 * @throws IllegalStateException
 	 *             if a mail transaction is already in progress
 	 */
 	public void startMailTransaction() throws IllegalStateException {
-		if (this.messageHandler != null) 
+		if (this.messageHandler != null)
 			throw new IllegalStateException(
 					"Mail transaction is already in progress");
 		this.messageHandler = this.server.getMessageHandlerFactory().create(
@@ -493,7 +493,7 @@ public class Session implements Runnable, MessageContext
 	public boolean isMailTransactionInProgress() {
 		return this.messageHandler != null;
 	}
-	
+
 	/**
 	 * Stops the mail transaction if it in progress and resets all state related
 	 * to mail transactions.
@@ -510,14 +510,14 @@ public class Session implements Runnable, MessageContext
 		this.singleRecipient = null;
 		this.declaredMessageSize = 0;
 	}
-	
+
 	/** @deprecated use {@link #resetMailTransaction()} */
 	@Deprecated
 	public void resetMessageState()
 	{
 		resetMailTransaction();
 	}
-	
+
 	/** Safely calls done() on a message hander, if one exists */
 	private void endMessageHandler()
 	{
@@ -533,16 +533,16 @@ public class Session implements Runnable, MessageContext
 			}
 		}
 	}
-	
+
 	/**
-	 * Reset the SMTP protocol to the initial state, which is the state after 
-	 * a server issues a 220 service ready greeting. 
+	 * Reset the SMTP protocol to the initial state, which is the state after
+	 * a server issues a 220 service ready greeting.
 	 */
 	public void resetSmtpProtocol() {
 		resetMailTransaction();
 		this.helo = null;
 	}
-	
+
 	/**
 	 * Triggers the shutdown of the thread and the closing of the connection.
 	 */
