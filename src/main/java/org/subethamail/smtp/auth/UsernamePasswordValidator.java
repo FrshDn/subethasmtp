@@ -3,7 +3,7 @@ package org.subethamail.smtp.auth;
 /**
  * Use this when your authentication scheme uses a username and a password.
  *
- * @author Marco Trevisan <mrctrevisan@yahoo.it>
+ * @author Marco Trevisan
  */
 public interface UsernamePasswordValidator
 {

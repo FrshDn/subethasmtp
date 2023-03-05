@@ -14,9 +14,9 @@ import org.subethamail.smtp.util.Base64;
  * You are only required to plug your UsernamePasswordValidator implementation
  * for username and password validation to take effect.
  *
- * @author Marco Trevisan <mrctrevisan@yahoo.it>
+ * @author Marco Trevisan
  * @author Jeff Schnitzer
- * @author Ian White <ibwhite@gmail.com>
+ * @author Ian White
  */
 public class PlainAuthenticationHandlerFactory implements AuthenticationHandlerFactory
 {

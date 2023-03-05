@@ -9,7 +9,7 @@ import org.subethamail.smtp.util.Base64;
 import org.subethamail.smtp.util.TextUtils;
 
 /**
- * @author Marco Trevisan <mrctrevisan@yahoo.it>
+ * @author Marco Trevisan
  * @author Jeff Schnitzer
  */
 public class AuthTest extends ServerTestCase
@@ -148,13 +148,13 @@ public class AuthTest extends ServerTestCase
 		this.send("AUTH");
 		this.expect("503");
 	}
-	
+
 	public void testMailBeforeAuth() throws Exception {
 		this.expect("220");
 
 		this.send("HELO foo.com");
 		this.expect("250");
-		
+
 		this.send("MAIL FROM: <john@example.com>");
 		this.expect("250");
 	}

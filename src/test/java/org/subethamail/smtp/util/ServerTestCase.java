@@ -49,7 +49,6 @@ public abstract class ServerTestCase extends TestCase
 	/** */
 	protected Client c;
 
-	/** */
 	public ServerTestCase(String name)
 	{
 		super(name);
@@ -81,19 +80,16 @@ public abstract class ServerTestCase extends TestCase
 		super.tearDown();
 	}
 
-	/** */
 	public void send(String msg) throws Exception
 	{
 		this.c.send(msg);
 	}
 
-	/** */
 	public void expect(String msg) throws Exception
 	{
 		this.c.expect(msg);
 	}
 
-	/** */
 	public void expectContains(String msg) throws Exception
 	{
 		this.c.expectContains(msg);

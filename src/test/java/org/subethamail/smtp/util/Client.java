@@ -36,7 +36,7 @@ public class Client
 	 * Sends a message to the server, ie "HELO foo.example.com". A newline will
 	 * be appended to the message.
 	 *
-	 * @throws an exception if the method cannot send for any reason
+	 * @throws Exception exception if the method cannot send for any reason
 	 */
 	public void send(String msg) throws Exception
 	{

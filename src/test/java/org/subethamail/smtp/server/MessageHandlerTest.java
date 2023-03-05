@@ -153,7 +153,6 @@ public class MessageHandlerTest {
 	/**
 	 * Test for issue 56: rejecting a Mail From causes IllegalStateException in
 	 * the next Mail From attempt.
-	 * @see <a href=http://code.google.com/p/subethasmtp/issues/detail?id=56>Issue 56</a>
 	 */
 	@Test
 	@Ignore

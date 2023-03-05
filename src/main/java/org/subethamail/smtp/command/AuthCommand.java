@@ -11,7 +11,7 @@ import org.subethamail.smtp.server.BaseCommand;
 import org.subethamail.smtp.server.Session;
 
 /**
- * @author Marco Trevisan <mrctrevisan@yahoo.it>
+ * @author Marco Trevisan
  * @author Jeff Schnitzer
  * @author Scott Hernandez
  */
