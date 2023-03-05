@@ -21,6 +21,15 @@ SubEthaSMTP's simple, low-level API is suitable for writing almost any kind of m
  * Change package namespace from javax to jakarta
  * Removed & disabled some test
 
+### Import from maven ###
+
+        <dependency>
+        <groupId>io.github.frshdn</groupId>
+        <artifactId>subethasmtp-java17</artifactId>
+        <version>3.1.7</version>
+            <scope>test</scope>
+        </dependency>
+
 ## A Little History ##
 SubEthaSMTP was split out of the SubEthaMail mailing list manager because it is a useful standalone component.  When we wrote SubEtha, the last thing we wanted to do was write our own SMTP server.  In our search for a modular Java SMTP component, we examined:
 
